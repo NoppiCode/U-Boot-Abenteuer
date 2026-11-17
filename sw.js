@@ -1,5 +1,5 @@
 // U-Boot Abenteuer – Service Worker (Offline-Betrieb)
-const CACHE = 'uboot-v4';
+const CACHE = 'uboot-v4-2';
 const FILES = ['./', './index.html', './three.min.js', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 
 self.addEventListener('install', e => {

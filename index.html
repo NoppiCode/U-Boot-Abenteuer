@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="theme-color" content="#0b3a55">
-<title>U-Boot Abenteuer V4</title>
+<title>U-Boot Abenteuer V4.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.webmanifest">
@@ -307,12 +307,8 @@ body.tp #hud{padding:0 clamp(12px,3vw,40px)}
   <div class="toggle">Vibration <button id="sVib"></button></div>
   <div class="toggle">Grafik <span class="gfxbtns"><button data-gfx="low">Niedrig</button><button data-gfx="mid">Mittel</button><button data-gfx="high">Hoch</button></span></div>
   <p style="font-size:13px;margin-top:-4px">Niedrig: schlicht und flott · Mittel: realistische Texturen · Hoch: Kiesel-Mosaik und volle Schärfe</p>
-  <p style="font-size:14px">Zum Ausprobieren der Läden:</p>
-  <button class="act buy" id="testCoins">+1000 Testmünzen</button>
-  <button class="act buydia" id="testDias">+100 Testdiamanten</button>
-  <button class="act sec" id="resetBtn">Spielstand löschen</button>
   <button class="act" id="setClose">Fertig</button>
-  <p style="font-size:12px;opacity:.7">U-Boot Abenteuer · Version V4</p>
+  <p style="font-size:12px;opacity:.7">U-Boot Abenteuer · Version V4.2</p>
 </div></div>
 <div id="worldM" class="modal hidden"><div class="mcard wide">
   <h2>Wähle deine Welt</h2>
@@ -335,7 +331,7 @@ if (typeof THREE === 'undefined') { document.getElementById('loading').textConte
 /* =========================================================
    Hilfsfunktionen
    ========================================================= */
-const VERSION = 'V4';
+const VERSION = 'V4.2';
 const TAU = Math.PI * 2;
 const $ = s => document.querySelector(s);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -354,102 +350,102 @@ function lum(hex) { const [r, g, b] = hexRgb(hex); return (0.299 * r + 0.587 * g
 const CAT = {
   boat: [
     { id: 'blubber', name: 'Blubber', price: 0, col: '#FFC93C', shape: 'round', speed: 1, steer: 1, lives: 3, desc: 'Das treue Start-Boot. Rund, gemütlich und zuverlässig.' },
-    { id: 'flitzer', name: 'Flitzer', price: 300, col: '#E63946', shape: 'slim', speed: 1.3, steer: 0.85, lives: 3, desc: 'Superschnell! Dafür etwas schwerer zu lenken.' },
-    { id: 'krabbe', name: 'Panzerkrabbe', price: 600, col: '#FB8500', shape: 'crab', speed: 0.88, steer: 1, lives: 5, desc: 'Langsam, aber mit dickem Panzer: 2 Leben extra.' },
-    { id: 'leuchte', name: 'Tiefseeleuchte', price: 900, col: '#3A86FF', shape: 'lamp', speed: 1, steer: 1.05, lives: 3, light: 1.9, desc: 'Hat eine Leuchtangel und extra starke Scheinwerfer für die Nacht.' },
-    { id: 'magnetus', name: 'Magnetus', price: 1200, col: '#9B5DE5', shape: 'magnet', speed: 1.05, steer: 1.05, lives: 3, magnet: 2, desc: 'Ein eingebauter Magnet zieht Münzen von selbst heran.' },
-    { id: 'goldflosse', name: 'Goldflosse', price: 2500, col: '#E0B040', shape: 'gold', speed: 1.15, steer: 1.1, lives: 4, coinMult: 2, desc: 'Das Prunk-Boot: jede Münze zählt doppelt!' },
-    { id: 'kristallwal', name: 'Kristallwal', dia: 40, col: '#7FE8FF', shape: 'kristall', speed: 1.2, steer: 1.15, lives: 5, coinMult: 2, light: 1.6, desc: 'Ein Wal aus leuchtenden Kristallen. Schnell, robust und Münzen zählen doppelt.' },
-    { id: 'muschelpalast', name: 'Muschel-Palast', dia: 80, col: '#FF9EBB', shape: 'muschel', speed: 1.1, steer: 1.1, lives: 6, magnet: 3, coinMult: 2, desc: 'Das Schloss der Meeresprinzessin: starker Magnet, 6 Leben und doppelte Münzen.' },
-    { id: 'diamanthai', name: 'Diamant-Hai', dia: 150, col: '#B8C4D6', shape: 'hai', speed: 1.45, steer: 1.3, lives: 6, magnet: 2, coinMult: 3, light: 1.5, desc: 'Das allerbeste Boot im ganzen Meer: blitzschnell, mit Magnet – jede Münze zählt dreifach!' }
+    { id: 'flitzer', name: 'Flitzer', price: 800, col: '#E63946', shape: 'slim', speed: 1.3, steer: 0.85, lives: 3, desc: 'Superschnell! Dafür etwas schwerer zu lenken.' },
+    { id: 'krabbe', name: 'Panzerkrabbe', price: 1600, col: '#FB8500', shape: 'crab', speed: 0.88, steer: 1, lives: 5, desc: 'Langsam, aber mit dickem Panzer: 2 Leben extra.' },
+    { id: 'leuchte', name: 'Tiefseeleuchte', price: 2500, col: '#3A86FF', shape: 'lamp', speed: 1, steer: 1.05, lives: 3, light: 1.9, desc: 'Hat eine Leuchtangel und extra starke Scheinwerfer für die Nacht.' },
+    { id: 'magnetus', name: 'Magnetus', price: 3500, col: '#9B5DE5', shape: 'magnet', speed: 1.05, steer: 1.05, lives: 3, magnet: 2, desc: 'Ein eingebauter Magnet zieht Münzen von selbst heran.' },
+    { id: 'goldflosse', name: 'Goldflosse', price: 7000, col: '#E0B040', shape: 'gold', speed: 1.15, steer: 1.1, lives: 4, coinMult: 2, desc: 'Das Prunk-Boot: jede Münze zählt doppelt!' },
+    { id: 'kristallwal', name: 'Kristallwal', dia: 80, col: '#7FE8FF', shape: 'kristall', speed: 1.2, steer: 1.15, lives: 5, light: 1.6, desc: 'Ein Wal aus leuchtenden Kristallen: schnell, robust und mit starken Scheinwerfern.' },
+    { id: 'muschelpalast', name: 'Muschel-Palast', dia: 160, col: '#FF9EBB', shape: 'muschel', speed: 1.1, steer: 1.1, lives: 6, magnet: 3, desc: 'Das Schloss der Meeresprinzessin: starker Magnet und 6 Leben.' },
+    { id: 'diamanthai', name: 'Diamant-Hai', dia: 300, col: '#B8C4D6', shape: 'hai', speed: 1.45, steer: 1.3, lives: 6, magnet: 2, coinMult: 2, light: 1.5, desc: 'Das allerbeste Boot im ganzen Meer: blitzschnell, mit Magnet – jede Münze zählt doppelt!' }
   ],
   color: [
     { id: 'gelb', name: 'Sonnengelb', hex: '#FFC93C', price: 0 },
-    { id: 'rot', name: 'Feuerrot', hex: '#E63946', price: 40 },
-    { id: 'orange', name: 'Orange', hex: '#FB8500', price: 40 },
-    { id: 'limette', name: 'Limette', hex: '#9BE15D', price: 40 },
-    { id: 'gruen', name: 'Grasgrün', hex: '#2B9348', price: 50 },
-    { id: 'minze', name: 'Minze', hex: '#98F5C8', price: 50 },
-    { id: 'tuerkis', name: 'Türkis', hex: '#2EC4B6', price: 50 },
-    { id: 'himmel', name: 'Himmelblau', hex: '#48CAE4', price: 50 },
-    { id: 'blau', name: 'Königsblau', hex: '#3A86FF', price: 60 },
-    { id: 'lila', name: 'Lila', hex: '#9B5DE5', price: 60 },
-    { id: 'pink', name: 'Pink', hex: '#FF6F91', price: 60 },
-    { id: 'rosa', name: 'Zuckerwatte', hex: '#FFC2D9', price: 60 },
-    { id: 'schoko', name: 'Schoko', hex: '#7F5539', price: 60 },
-    { id: 'weiss', name: 'Schneeweiß', hex: '#F4F7FA', price: 70 },
-    { id: 'schwarz', name: 'Nachtschwarz', hex: '#2B2D42', price: 80 },
-    { id: 'perlmutt', name: 'Perlmutt', hex: '#E9DDFF', price: 350, special: 'perlmutt' },
-    { id: 'chrom', name: 'Chrom', hex: '#C9D3DC', price: 400, special: 'chrom' },
-    { id: 'gold', name: 'Echtes Gold', hex: '#E0B040', price: 500, special: 'gold' },
-    { id: 'regenbogen', name: 'Regenbogen', hex: '#FF6F91', price: 800, special: 'regenbogen' },
-    { id: 'diamant', name: 'Diamant-Glitzer', hex: '#DDF6FF', dia: 15, special: 'diamant' },
-    { id: 'aurora', name: 'Polarlicht', hex: '#3FD9A0', dia: 20, special: 'aurora' },
-    { id: 'galaxie', name: 'Galaxie', hex: '#3B2A7A', dia: 25, special: 'galaxie' },
-    { id: 'lava', name: 'Lava', hex: '#C2410C', dia: 25, special: 'lava' }
+    { id: 'rot', name: 'Feuerrot', hex: '#E63946', price: 80 },
+    { id: 'orange', name: 'Orange', hex: '#FB8500', price: 80 },
+    { id: 'limette', name: 'Limette', hex: '#9BE15D', price: 80 },
+    { id: 'gruen', name: 'Grasgrün', hex: '#2B9348', price: 100 },
+    { id: 'minze', name: 'Minze', hex: '#98F5C8', price: 100 },
+    { id: 'tuerkis', name: 'Türkis', hex: '#2EC4B6', price: 100 },
+    { id: 'himmel', name: 'Himmelblau', hex: '#48CAE4', price: 100 },
+    { id: 'blau', name: 'Königsblau', hex: '#3A86FF', price: 120 },
+    { id: 'lila', name: 'Lila', hex: '#9B5DE5', price: 120 },
+    { id: 'pink', name: 'Pink', hex: '#FF6F91', price: 120 },
+    { id: 'rosa', name: 'Zuckerwatte', hex: '#FFC2D9', price: 120 },
+    { id: 'schoko', name: 'Schoko', hex: '#7F5539', price: 120 },
+    { id: 'weiss', name: 'Schneeweiß', hex: '#F4F7FA', price: 140 },
+    { id: 'schwarz', name: 'Nachtschwarz', hex: '#2B2D42', price: 160 },
+    { id: 'perlmutt', name: 'Perlmutt', hex: '#E9DDFF', price: 700, special: 'perlmutt' },
+    { id: 'chrom', name: 'Chrom', hex: '#C9D3DC', price: 800, special: 'chrom' },
+    { id: 'gold', name: 'Echtes Gold', hex: '#E0B040', price: 1000, special: 'gold' },
+    { id: 'regenbogen', name: 'Regenbogen', hex: '#FF6F91', price: 1600, special: 'regenbogen' },
+    { id: 'diamant', name: 'Diamant-Glitzer', hex: '#DDF6FF', dia: 30, special: 'diamant' },
+    { id: 'aurora', name: 'Polarlicht', hex: '#3FD9A0', dia: 40, special: 'aurora' },
+    { id: 'galaxie', name: 'Galaxie', hex: '#3B2A7A', dia: 50, special: 'galaxie' },
+    { id: 'lava', name: 'Lava', hex: '#C2410C', dia: 50, special: 'lava' }
   ],
   pattern: [
     { id: 'kein', name: 'Ohne Muster', price: 0 },
-    { id: 'streifen', name: 'Streifen', price: 60 },
-    { id: 'punkte', name: 'Punkte', price: 60 },
-    { id: 'zickzack', name: 'Zickzack', price: 80 },
-    { id: 'wellen', name: 'Wellen', price: 90 },
-    { id: 'karo', name: 'Karo', price: 100 },
-    { id: 'sterne', name: 'Sternchen', price: 100 },
-    { id: 'tarnung', name: 'Tarnung', price: 120 },
-    { id: 'schuppen', name: 'Fischschuppen', price: 130 },
-    { id: 'leopard', name: 'Leopard', price: 140 },
-    { id: 'flammen', name: 'Flammen', price: 150 },
-    { id: 'zaehne', name: 'Haifischmaul', price: 150 },
-    { id: 'kristalle', name: 'Kristalle', dia: 10 },
-    { id: 'sternbild', name: 'Sternbilder', dia: 10 },
-    { id: 'drachen', name: 'Drachenschuppen', dia: 15 }
+    { id: 'streifen', name: 'Streifen', price: 120 },
+    { id: 'punkte', name: 'Punkte', price: 120 },
+    { id: 'zickzack', name: 'Zickzack', price: 160 },
+    { id: 'wellen', name: 'Wellen', price: 180 },
+    { id: 'karo', name: 'Karo', price: 200 },
+    { id: 'sterne', name: 'Sternchen', price: 200 },
+    { id: 'tarnung', name: 'Tarnung', price: 240 },
+    { id: 'schuppen', name: 'Fischschuppen', price: 260 },
+    { id: 'leopard', name: 'Leopard', price: 280 },
+    { id: 'flammen', name: 'Flammen', price: 300 },
+    { id: 'zaehne', name: 'Haifischmaul', price: 300 },
+    { id: 'kristalle', name: 'Kristalle', dia: 20 },
+    { id: 'sternbild', name: 'Sternbilder', dia: 20 },
+    { id: 'drachen', name: 'Drachenschuppen', dia: 30 }
   ],
   sticker: [
-    { id: 'stern', name: 'Stern', price: 30 }, { id: 'herz', name: 'Herz', price: 30 },
-    { id: 'blitz', name: 'Blitz', price: 40 }, { id: 'anker', name: 'Anker', price: 40 },
-    { id: 'fisch', name: 'Fisch', price: 40 }, { id: 'smiley', name: 'Smiley', price: 50 },
-    { id: 'muschel', name: 'Muschel', price: 50 }, { id: 'blume', name: 'Blume', price: 50 },
-    { id: 'pfote', name: 'Pfote', price: 50 }, { id: 'note', name: 'Musiknote', price: 50 },
-    { id: 'nummer', name: 'Startnummer', price: 60 }, { id: 'krone', name: 'Krone', price: 70 },
-    { id: 'rakete', name: 'Rakete', price: 70 }, { id: 'flamme', name: 'Feuer', price: 70 },
-    { id: 'krake', name: 'Krake', price: 80 }, { id: 'regenbogen', name: 'Regenbogen', price: 80 },
-    { id: 'delfin', name: 'Delfin', price: 90 }, { id: 'augen', name: 'Kulleraugen', price: 100 },
-    { id: 'diamant', name: 'Diamant', dia: 5 }, { id: 'komet', name: 'Komet', dia: 8 },
-    { id: 'planet', name: 'Planet', dia: 8 }, { id: 'einhorn', name: 'Einhorn', dia: 12 }
+    { id: 'stern', name: 'Stern', price: 60 }, { id: 'herz', name: 'Herz', price: 60 },
+    { id: 'blitz', name: 'Blitz', price: 80 }, { id: 'anker', name: 'Anker', price: 80 },
+    { id: 'fisch', name: 'Fisch', price: 80 }, { id: 'smiley', name: 'Smiley', price: 100 },
+    { id: 'muschel', name: 'Muschel', price: 100 }, { id: 'blume', name: 'Blume', price: 100 },
+    { id: 'pfote', name: 'Pfote', price: 100 }, { id: 'note', name: 'Musiknote', price: 100 },
+    { id: 'nummer', name: 'Startnummer', price: 120 }, { id: 'krone', name: 'Krone', price: 140 },
+    { id: 'rakete', name: 'Rakete', price: 140 }, { id: 'flamme', name: 'Feuer', price: 140 },
+    { id: 'krake', name: 'Krake', price: 160 }, { id: 'regenbogen', name: 'Regenbogen', price: 160 },
+    { id: 'delfin', name: 'Delfin', price: 180 }, { id: 'augen', name: 'Kulleraugen', price: 200 },
+    { id: 'diamant', name: 'Diamant', dia: 10 }, { id: 'komet', name: 'Komet', dia: 16 },
+    { id: 'planet', name: 'Planet', dia: 16 }, { id: 'einhorn', name: 'Einhorn', dia: 24 }
   ],
   prop: [
     { id: 'standard', name: 'Standard', price: 0, trail: '#FFFFFF', desc: 'Die klassische Drei-Blatt-Schraube.' },
-    { id: 'vierblatt', name: 'Vierblatt', price: 80, trail: '#BDE0FE', desc: 'Vier Blätter für mehr Wirbel.' },
-    { id: 'blumen', name: 'Blumen-Schraube', price: 150, trail: '#FF8FC7', desc: 'Dreht sich wie eine Blüte im Wind.' },
-    { id: 'stern', name: 'Stern-Schraube', price: 180, trail: '#FFD60A', desc: 'Funkelnde Sternspitzen.' },
-    { id: 'duese', name: 'Turbo-Düse', price: 200, trail: '#3DF5FF', desc: 'Ummantelte Düse mit Leuchtring.' },
-    { id: 'doppel', name: 'Doppelschraube', price: 250, trail: '#9BE15D', desc: 'Gleich zwei Schrauben am Heck.' },
-    { id: 'wirbel', name: 'Wirbel', price: 300, trail: '#C77DFF', desc: 'Ein verdrehter Zauber-Wirbel.' },
-    { id: 'gold', name: 'Gold-Schraube', price: 400, trail: '#FFC300', desc: 'Glänzt wie ein Piratenschatz.' },
-    { id: 'kristall', name: 'Kristall-Schraube', dia: 15, trail: '#B8F4FF', desc: 'Leuchtende Kristallblätter, die im Dunkeln strahlen.' },
-    { id: 'regenbogen', name: 'Regenbogen-Schraube', dia: 20, trail: 'rainbow', desc: 'Sechs bunte Blätter und eine Regenbogen-Spur beim Turbo!' }
+    { id: 'vierblatt', name: 'Vierblatt', price: 200, trail: '#BDE0FE', desc: 'Vier Blätter für mehr Wirbel.' },
+    { id: 'blumen', name: 'Blumen-Schraube', price: 380, trail: '#FF8FC7', desc: 'Dreht sich wie eine Blüte im Wind.' },
+    { id: 'stern', name: 'Stern-Schraube', price: 450, trail: '#FFD60A', desc: 'Funkelnde Sternspitzen.' },
+    { id: 'duese', name: 'Turbo-Düse', price: 500, trail: '#3DF5FF', desc: 'Ummantelte Düse mit Leuchtring.' },
+    { id: 'doppel', name: 'Doppelschraube', price: 620, trail: '#9BE15D', desc: 'Gleich zwei Schrauben am Heck.' },
+    { id: 'wirbel', name: 'Wirbel', price: 750, trail: '#C77DFF', desc: 'Ein verdrehter Zauber-Wirbel.' },
+    { id: 'gold', name: 'Gold-Schraube', price: 1000, trail: '#FFC300', desc: 'Glänzt wie ein Piratenschatz.' },
+    { id: 'kristall', name: 'Kristall-Schraube', dia: 30, trail: '#B8F4FF', desc: 'Leuchtende Kristallblätter, die im Dunkeln strahlen.' },
+    { id: 'regenbogen', name: 'Regenbogen-Schraube', dia: 40, trail: 'rainbow', desc: 'Sechs bunte Blätter und eine Regenbogen-Spur beim Turbo!' }
   ],
   light: [
     { id: 'weiss', name: 'Weißes Licht', hex: '#FFFFFF', price: 0 },
-    { id: 'warm', name: 'Warmgelb', hex: '#FFD58A', price: 60 },
-    { id: 'eis', name: 'Eisblau', hex: '#9EE7FF', price: 80 },
-    { id: 'gruen', name: 'Leuchtgrün', hex: '#9BFFB0', price: 80 },
-    { id: 'pink', name: 'Pink', hex: '#FF9BE0', price: 100 },
-    { id: 'regenbogen', name: 'Regenbogen-Licht', hex: '#FF9BE0', price: 300, special: 'regenbogen' },
-    { id: 'sternenlicht', name: 'Sternenlicht', hex: '#E8E0FF', dia: 8, special: 'funkeln' },
-    { id: 'disco', name: 'Disco-Licht', hex: '#FF3DCB', dia: 12, special: 'disco' }
+    { id: 'warm', name: 'Warmgelb', hex: '#FFD58A', price: 120 },
+    { id: 'eis', name: 'Eisblau', hex: '#9EE7FF', price: 160 },
+    { id: 'gruen', name: 'Leuchtgrün', hex: '#9BFFB0', price: 160 },
+    { id: 'pink', name: 'Pink', hex: '#FF9BE0', price: 200 },
+    { id: 'regenbogen', name: 'Regenbogen-Licht', hex: '#FF9BE0', price: 600, special: 'regenbogen' },
+    { id: 'sternenlicht', name: 'Sternenlicht', hex: '#E8E0FF', dia: 16, special: 'funkeln' },
+    { id: 'disco', name: 'Disco-Licht', hex: '#FF3DCB', dia: 24, special: 'disco' }
   ],
   music: [
     { id: 'rauschen', name: 'Meeresrauschen', price: 0, col: '#48CAE4', desc: 'Leises Wellenrauschen mit Glöckchen.', ambient: true },
-    { id: 'walzer', name: 'Blubber-Walzer', price: 100, col: '#FFC93C', desc: 'Ein fröhlicher Walzer zum Schaukeln.', bpm: 150, beats: 3, root: 60, scale: 'dur', prog: [0, 4, 4, 0, 3, 0, 4, 0], lead: 'triangle', bass: 'sine', seed: 11, style: 'walzer' },
-    { id: 'groove', name: 'Korallen-Groove', price: 150, col: '#FF7F6E', desc: 'Lässiger Groove für entspannte Fahrten.', bpm: 100, beats: 4, root: 57, scale: 'dorisch', prog: [0, 3, 0, 4], lead: 'triangle', bass: 'triangle', seed: 5, style: 'groove' },
-    { id: 'piraten', name: 'Piraten-Polka', price: 150, col: '#E63946', desc: 'Hoch die Segel – äh, die Schraube!', bpm: 132, beats: 4, root: 62, scale: 'moll', prog: [0, 4, 0, 4, 3, 0, 4, 0], lead: 'square', bass: 'triangle', seed: 21, style: 'polka' },
-    { id: 'traum', name: 'Tiefsee-Traum', price: 200, col: '#3A86FF', desc: 'Ruhige Klänge aus der Tiefe.', bpm: 72, beats: 4, root: 55, scale: 'moll', prog: [0, 5, 3, 4], lead: 'sine', bass: 'sine', seed: 8, style: 'traum' },
-    { id: 'disco', name: 'Delfin-Disco', price: 250, col: '#C77DFF', desc: 'Tanzen unter Wasser!', bpm: 118, beats: 4, root: 60, scale: 'dur', prog: [0, 5, 3, 4], lead: 'square', bass: 'sawtooth', seed: 33, style: 'disco' },
-    { id: 'harfe', name: 'Atlantis-Harfe', price: 300, col: '#2EC4B6', desc: 'Glitzernde Harfenklänge aus der versunkenen Stadt.', bpm: 84, beats: 4, root: 62, scale: 'dur', prog: [0, 3, 5, 4], lead: 'sine', bass: 'sine', seed: 17, style: 'harfe' },
-    { id: 'rock', name: 'Hai-Rock', price: 300, col: '#FB8500', desc: 'Kraftvoller Rock für Turbo-Fahrer.', bpm: 128, beats: 4, root: 52, scale: 'moll', prog: [0, 5, 6, 4], lead: 'square', bass: 'sawtooth', seed: 44, style: 'rock' },
-    { id: 'glitzer', name: 'Diamanten-Glitzer', dia: 10, col: '#5CF2FF', desc: 'Eine funkelnde Spieluhr-Melodie mit Glöckchen.', bpm: 96, beats: 4, root: 67, scale: 'dur', prog: [0, 5, 3, 4, 0, 3, 4, 4], lead: 'sine', bass: 'sine', seed: 77, style: 'harfe', bells: true }
+    { id: 'walzer', name: 'Blubber-Walzer', price: 250, col: '#FFC93C', desc: 'Ein fröhlicher Walzer zum Schaukeln.', bpm: 150, beats: 3, root: 60, scale: 'dur', prog: [0, 4, 4, 0, 3, 0, 4, 0], lead: 'triangle', bass: 'sine', seed: 11, style: 'walzer' },
+    { id: 'groove', name: 'Korallen-Groove', price: 380, col: '#FF7F6E', desc: 'Lässiger Groove für entspannte Fahrten.', bpm: 100, beats: 4, root: 57, scale: 'dorisch', prog: [0, 3, 0, 4], lead: 'triangle', bass: 'triangle', seed: 5, style: 'groove' },
+    { id: 'piraten', name: 'Piraten-Polka', price: 380, col: '#E63946', desc: 'Hoch die Segel – äh, die Schraube!', bpm: 132, beats: 4, root: 62, scale: 'moll', prog: [0, 4, 0, 4, 3, 0, 4, 0], lead: 'square', bass: 'triangle', seed: 21, style: 'polka' },
+    { id: 'traum', name: 'Tiefsee-Traum', price: 500, col: '#3A86FF', desc: 'Ruhige Klänge aus der Tiefe.', bpm: 72, beats: 4, root: 55, scale: 'moll', prog: [0, 5, 3, 4], lead: 'sine', bass: 'sine', seed: 8, style: 'traum' },
+    { id: 'disco', name: 'Delfin-Disco', price: 620, col: '#C77DFF', desc: 'Tanzen unter Wasser!', bpm: 118, beats: 4, root: 60, scale: 'dur', prog: [0, 5, 3, 4], lead: 'square', bass: 'sawtooth', seed: 33, style: 'disco' },
+    { id: 'harfe', name: 'Atlantis-Harfe', price: 750, col: '#2EC4B6', desc: 'Glitzernde Harfenklänge aus der versunkenen Stadt.', bpm: 84, beats: 4, root: 62, scale: 'dur', prog: [0, 3, 5, 4], lead: 'sine', bass: 'sine', seed: 17, style: 'harfe' },
+    { id: 'rock', name: 'Hai-Rock', price: 750, col: '#FB8500', desc: 'Kraftvoller Rock für Turbo-Fahrer.', bpm: 128, beats: 4, root: 52, scale: 'moll', prog: [0, 5, 6, 4], lead: 'square', bass: 'sawtooth', seed: 44, style: 'rock' },
+    { id: 'glitzer', name: 'Diamanten-Glitzer', dia: 20, col: '#5CF2FF', desc: 'Eine funkelnde Spieluhr-Melodie mit Glöckchen.', bpm: 96, beats: 4, root: 67, scale: 'dur', prog: [0, 5, 3, 4, 0, 3, 4, 4], lead: 'sine', bass: 'sine', seed: 77, style: 'harfe', bells: true }
   ]
 };
 const UPS = [
@@ -460,9 +456,9 @@ const UPS = [
   { id: 'magnet', name: 'Münzmagnet', group: 'technik', desc: 'Münzen in der Nähe fliegen von selbst zu dir.', max: 5 },
   { id: 'netzgr', name: 'Netz-Größe', group: 'netz', desc: 'Größeres Netz, das länger offen bleibt.', max: 5 },
   { id: 'netzlad', name: 'Netz-Ladung', group: 'netz', desc: 'Das Netz ist mit weniger Münzen voll geladen.', max: 5 },
-  { id: 'radar', name: 'Radar', group: 'netz', desc: 'Zeigt dir, was vor dir liegt. Stufe 1: Münzen und Funde. Stufe 2: auch Hindernisse und weiter. Stufe 3: größte Reichweite und Warnton.', max: 3, costs: [250, 600, 1200] }
+  { id: 'radar', name: 'Radar', group: 'netz', desc: 'Zeigt dir, was vor dir liegt. Stufe 1: Münzen und Funde. Stufe 2: auch Hindernisse und weiter. Stufe 3: größte Reichweite und Warnton.', max: 3, costs: [500, 1500, 3000] }
 ];
-const UP_COST = [60, 120, 250, 500, 900];
+const UP_COST = [100, 250, 500, 1000, 2000];
 const UP_ICONS = {
   motor: '<svg viewBox="0 0 24 24" fill="none" stroke="#FFC93C" stroke-width="2.2"><circle cx="12" cy="12" r="3.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg>',
   ruder: '<svg viewBox="0 0 24 24" fill="none" stroke="#48CAE4" stroke-width="2.2"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v8M12 14v8M2 12h8M14 12h8"/></svg>',
@@ -1451,17 +1447,17 @@ const WORLDS = [
   { id: 'riff', name: 'Korallenriff', desc: 'Bunte Korallen, Clownfische und Schildkröten.', water: 0x0f7290, floor: 0xffffff, mix: { coral: 1, brain: 1, rock: 1, weed: 1 }, extra: 'anemone', ev: { manta: 1.2, hai: 0.8 },
     missions: [{ t: 'coins', n: 40 }, { t: 'dist', n: 600 }, { t: 'stars', n: 3 }] },
   { id: 'tang', name: 'Seetangwald', desc: 'Riesige Algen wiegen sich in der Strömung.', water: 0x1f7a5c, floor: 0xd8e0b0, mix: { coral: 0.3, brain: 0.2, rock: 1, weed: 1 }, extra: 'kelp', ev: { seepferd: 2.5, turtle: 2.4, stroemung: 2 },
-    missions: [{ t: 'turtle', n: 2 }, { t: 'coins', n: 60 }, { t: 'rescue', n: 3 }] },
+    missions: [{ t: 'turtle', n: 2 }, { t: 'coins', n: 100 }, { t: 'rescue', n: 2 }] },
   { id: 'wrack', name: 'Schiffswrack-Friedhof', desc: 'Alte Wracks, Anker und versunkene Schätze.', water: 0x2e5d5a, floor: 0xb8b090, mix: { coral: 0.2, brain: 0.1, rock: 1, weed: 0.6 }, extra: 'wreck', ev: { hai: 2.5, tunnel: 1.2 }, chest: true,
-    missions: [{ t: 'chest', n: 3 }, { t: 'nohit', n: 400 }, { t: 'dias', n: 5 }] },
+    missions: [{ t: 'chest', n: 2 }, { t: 'nohit', n: 500 }, { t: 'dias', n: 3 }] },
   { id: 'eis', name: 'Eismeer', desc: 'Eisberge, Pinguine und Robben im kalten Wasser.', water: 0x5aa9c9, floor: 0xe8f4ff, mix: { coral: 0, brain: 0, rock: 1, weed: 0 }, extra: 'ice', ev: { iceberg: 3.5, pinguin: 3, robbe: 2.2, wal: 1.6, turtle: 0, octopus: 0.6, tuna: 0.5 },
-    missions: [{ t: 'dist', n: 900 }, { t: 'rescue', n: 4 }, { t: 'coins', n: 80 }] },
+    missions: [{ t: 'dist', n: 1500 }, { t: 'rescue', n: 3 }, { t: 'coins', n: 150 }] },
   { id: 'tiefsee', name: 'Leuchtende Tiefsee', desc: 'Immer dunkel – hier leuchtet alles von selbst.', water: 0x061530, floor: 0x6a6a8a, mix: { coral: 0.4, brain: 0.3, rock: 1, weed: 0 }, extra: 'glow', night: true, ev: { octopus: 3, ship: 0, angler: 0, trawler: 0, iceberg: 0, dolphins: 0, turtle: 0.4, tunnel: 1.4, wal: 0.4 },
-    missions: [{ t: 'leucht', n: 4 }, { t: 'nohit', n: 600 }, { t: 'dias', n: 8 }] },
+    missions: [{ t: 'leucht', n: 3 }, { t: 'nohit', n: 800 }, { t: 'dias', n: 4 }] },
   { id: 'atlantis', name: 'Versunkenes Atlantis', desc: 'Säulen, Tempel und geheimnisvolle Leuchtrunen.', water: 0x3b3fa0, floor: 0xd8c8f0, mix: { coral: 0.6, brain: 0.4, rock: 0.6, weed: 0.4 }, extra: 'ruins', ev: { manta: 3, wal: 1.4, tunnel: 1 },
-    missions: [{ t: 'dias', n: 10 }, { t: 'dist', n: 1200 }, { t: 'coins', n: 120 }] }
+    missions: [{ t: 'dias', n: 5 }, { t: 'dist', n: 2000 }, { t: 'coins', n: 250 }] }
 ];
-const MISSION_REWARD = [{ c: 100, d: 2 }, { c: 150, d: 3 }, { c: 200, d: 5 }];
+const MISSION_REWARD = [{ c: 50, d: 1 }, { c: 80, d: 2 }, { c: 120, d: 3 }];
 let W = WORLDS[0];
 const worldWaterC = new THREE.Color(W.water);
 const byWorld = id => WORLDS.find(w => w.id === id) || WORLDS[0];
@@ -1952,7 +1948,7 @@ function endRun(crashed) {
   saveGhost(dist);
   const extra = [];
   if (R.missionsDone.length) extra.push('<b>Missionen geschafft:</b> ' + R.missionsDone.join(', '));
-  if (S.mapPieces >= 6) { S.mapPieces -= 6; S.coins += 500; S.diamonds += 20; S.stats.treasure++; extra.push('<b>Schatzkammer geöffnet!</b> +500 Münzen, +20 Diamanten'); SFX.big(); }
+  if (S.mapPieces >= 6) { S.mapPieces -= 6; S.coins += 300; S.diamonds += 10; S.stats.treasure++; extra.push('<b>Schatzkammer geöffnet!</b> +300 Münzen, +10 Diamanten'); SFX.big(); }
   const tro = checkTrophies(); if (tro.length) extra.push('<b>Neue Pokale:</b> ' + tro.join(', '));
   $('#overExtra').innerHTML = extra.map(e => '<p>' + e + '</p>').join('');
   const qual = dist > 0 && (S.scores.length < 10 || dist > S.scores[Math.min(9, S.scores.length - 1)].d);
@@ -2017,18 +2013,21 @@ function spawnObstacle(z) {
   } else { o.position.set(x, rand(Y_MIN, Y_MAX), z); o.userData.baseY = o.position.y; o.userData.phase = rand(0, TAU); }
   o.userData.active = true; o.visible = true;
 }
-const ITEM_INFO = { perle: { d: 1, txt: 'Perle!', col: '#FFFFFF' }, flasche: { d: 2, txt: 'Flaschenpost!', col: '#9EE7FF' }, muell: { d: 1, txt: 'Müll gesammelt!', col: '#7CFFB2' }, leucht: { d: 3, txt: 'Leuchtperle!', col: '#3DF5FF' }, netzfisch: { d: 1, txt: 'Fisch gerettet!', col: '#FF8FD8' }, truhe: { d: 2, txt: 'Schatztruhe! +20 Münzen', col: '#FFD86B' }, karte: { d: 0, txt: 'Schatzkarte!', col: '#FFE08A' } };
+const ITEM_INFO = { perle: { d: 1, txt: 'Perle!', col: '#FFFFFF' }, flasche: { d: 0, txt: 'Flaschenpost!', col: '#9EE7FF' }, muell: { d: 0, txt: 'Müll gesammelt!', col: '#7CFFB2' }, leucht: { d: 1, txt: 'Leuchtperle!', col: '#3DF5FF' }, netzfisch: { d: 0, c: 5, txt: 'Fisch gerettet!', col: '#FF8FD8' }, truhe: { d: 1, c: 15, txt: 'Schatztruhe!', col: '#FFD86B' }, karte: { d: 0, txt: 'Schatzkarte!', col: '#FFE08A' } };
 function collectItem(it) {
   it.userData.active = false; it.visible = false;
   const info = ITEM_INFO[it.userData.type];
   const ty = it.userData.type;
   if (ty === 'muell') { R.stars++; $('#runStars').textContent = R.stars; SFX.star(); } else SFX.big();
   if (ty === 'netzfisch') { R.rescued++; S.stats.rescued++; }
-  if (ty === 'truhe') { R.chests++; S.stats.chests++; R.coins += 20 * ST.coinMult; $('#runCoins').textContent = R.coins; }
+  if (ty === 'truhe') { R.chests++; S.stats.chests++; }
   if (ty === 'leucht') R.leucht++;
-  R.dias += info.d; $('#runDias').textContent = R.dias; vib(25);
+  let d = info.d, c = info.c || 0;
+  if (ty === 'flasche') { if (Math.random() < 0.2) d = 1; else c = 5 + Math.floor(Math.random() * 3) * 5; }
+  if (c) { R.coins += c * ST.coinMult; $('#runCoins').textContent = R.coins; }
+  R.dias += d; $('#runDias').textContent = R.dias; vib(25);
   if (ty === 'karte') { S.mapPieces++; R.maps++; popText('Schatzkarten-Teil ' + Math.min(6, S.mapPieces) + '/6!', info.col); burst(it.position, 0xffe08a, 14); return; }
-  popText(info.txt + ' +' + info.d + ' Diamant' + (info.d > 1 ? 'en' : ''), info.col); burst(it.position, new THREE.Color(info.col).getHex(), 12);
+  popText(info.txt + (d ? ' +' + d + ' Diamant' + (d > 1 ? 'en' : '') : '') + (c ? ' +' + c * ST.coinMult + ' Münzen' : '') + (ty === 'muell' ? ' +1 Stern' : ''), info.col); burst(it.position, new THREE.Color(info.col).getHex(), 12);
 }
 
 const tmpV = new THREE.Vector3(), camPos = new THREE.Vector3();
@@ -2095,7 +2094,7 @@ function updateGame(dt) {
   // Spawnen
   const dist = -R.camZ;
   while (R.nextCoinZ > R.camZ - 150) { spawnCoinGroup(R.nextCoinZ); R.nextCoinZ -= rand(28, 42); }
-  while (R.nextItemZ > R.camZ - 150) { spawnItem(R.nextItemZ); R.nextItemZ -= rand(55, 100); }
+  while (R.nextItemZ > R.camZ - 150) { spawnItem(R.nextItemZ); R.nextItemZ -= rand(150, 250); }
   while (R.nextObsZ > R.camZ - 150) { spawnObstacle(R.nextObsZ); R.nextObsZ -= Math.max(14, 42 - dist / 70) * rand(0.8, 1.2); }
   while (R.nextEvZ > R.camZ - 160) { spawnEvent(R.nextEvZ); R.nextEvZ -= Math.max(55, 110 - dist / 60) * rand(0.8, 1.25); }
 
@@ -2289,11 +2288,8 @@ function syncToggles() { for (const [id, k] of [['#pMus', 'music'], ['#sMus', 'm
 function toggleSet(k) { S.set[k] = !S.set[k]; persist(); syncToggles(); if (k === 'music') { if (!S.set.music) Music.stop(); else if (state === 'pause' || state === 'play') Music.play(S.equip.music); } }
 $('#pMus').addEventListener('click', () => toggleSet('music')); $('#sMus').addEventListener('click', () => toggleSet('music'));
 $('#pSfx').addEventListener('click', () => toggleSet('sfx')); $('#sSfx').addEventListener('click', () => toggleSet('sfx'));
-$('#setBtn').addEventListener('click', () => { ensureAudio(); syncToggles(); syncGfx(); syncView(); $('#resetBtn').textContent = 'Spielstand löschen'; $('#setM').classList.remove('hidden'); });
+$('#setBtn').addEventListener('click', () => { ensureAudio(); syncToggles(); syncGfx(); syncView(); $('#setM').classList.remove('hidden'); });
 $('#setClose').addEventListener('click', () => { $('#setM').classList.add('hidden'); UI.show('home'); });
-$('#testCoins').addEventListener('click', () => { S.coins += 1000; persist(); SFX.buy(); toast('+1000 Testmünzen'); });
-$('#testDias').addEventListener('click', () => { S.diamonds += 100; persist(); SFX.buy(); toast('+100 Testdiamanten'); });
-$('#resetBtn').addEventListener('click', e => { const b = e.currentTarget; if (b.textContent !== 'Wirklich löschen?') { b.textContent = 'Wirklich löschen?'; return; } S = clone(DEFAULT); persist(); H.key = ''; b.textContent = 'Gelöscht'; toast('Spielstand gelöscht'); });
 
 /* =========================================================
    Hauptschleife
@@ -2350,7 +2346,7 @@ function renderLog() {
     const cup = c => `<svg viewBox="0 0 24 24"><path d="M7 3h10v5a5 5 0 0 1-10 0z" fill="${c}"/><path d="M7 5H4a3 3 0 0 0 3 4M17 5h3a3 3 0 0 1-3 4" stroke="${c}" stroke-width="1.8" fill="none"/><rect x="10.5" y="12" width="3" height="5" fill="${c}"/><rect x="7" y="17" width="10" height="3" rx="1" fill="${c}"/></svg>`;
     b.innerHTML = `<p>${Object.keys(S.trophies).length} von ${TROPHIES.length} Pokalen</p>` + TROPHIES.map(([id, name, desc]) => `<div class="troph ${S.trophies[id] ? '' : 'no'}">${cup(S.trophies[id] ? '#FFC93C' : '#8D99AE')}<div><b>${name}</b><small>${desc}</small></div></div>`).join('');
   } else {
-    b.innerHTML = `<p>Finde unterwegs Schatzkarten-Teile. Mit 6 Teilen öffnet sich nach dem Tauchgang die Schatzkammer: <b>+500 Münzen und +20 Diamanten!</b></p><div class="mapgrid">${Array.from({ length: 6 }, (_, i) => `<div class="${i < S.mapPieces ? 'on' : ''}"></div>`).join('')}</div><p style="text-align:center">${S.mapPieces} von 6 Teilen · Schatzkammer schon ${S.stats.treasure}× geöffnet</p>`;
+    b.innerHTML = `<p>Finde unterwegs Schatzkarten-Teile. Mit 6 Teilen öffnet sich nach dem Tauchgang die Schatzkammer: <b>+300 Münzen und +10 Diamanten!</b></p><div class="mapgrid">${Array.from({ length: 6 }, (_, i) => `<div class="${i < S.mapPieces ? 'on' : ''}"></div>`).join('')}</div><p style="text-align:center">${S.mapPieces} von 6 Teilen · Schatzkammer schon ${S.stats.treasure}× geöffnet</p>`;
   }
 }
 function escapeHtml(t) { return String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }

@@ -4,6 +4,40 @@ Kinder-Handyspiel (FSK 6) mit Three.js, als HTML-Datei, später als PWA.
 
 ---
 
+## V4.2 – 17.11.2026
+
+**Wirtschaft neu abgestimmt für langen Spielspaß.** Ein Testspieler hatte V4 an einem Tag durchgespielt.
+
+- **Preise ungefähr verdoppelt:**
+  - Lackiererei: ×2, Schrauben und Musik ×2,5
+  - U-Boote: Flitzer 800, Panzerkrabbe 1.600, Tiefseeleuchte 2.500, Magnetus 3.500, Goldflosse 7.000
+  - Werkstatt pro Stufe: 100 / 250 / 500 / 1.000 / 2.000
+  - Radar: 500 / 1.500 / 3.000
+  - Diamant-Boote: 80 / 160 / 300, alle Diamant-Anpassungen ×2
+- **Diamanten seltener:**
+  - Sonderfunde kommen etwa halb so oft.
+  - Diamanten geben nur noch Perle, Leuchtperle, Schatztruhe (je 1) und manchmal die Flaschenpost (1 von 5).
+  - Müll gibt einen Umwelt-Stern, ein geretteter Fisch 5 Münzen, die Flaschenpost sonst 5 bis 15 Münzen.
+- **Weniger Münz-Verdopplung:** Kristallwal und Muschel-Palast verdoppeln nicht mehr. Der Diamant-Hai verdoppelt statt zu verdreifachen. Die Goldflosse verdoppelt weiterhin.
+- **Belohnungen:**
+  - Missionen geben 50 / 80 / 120 Münzen und 1 / 2 / 3 Diamanten.
+  - Die Schatzkammer gibt 300 Münzen und 10 Diamanten.
+- **Missionen angepasst:**
+  - Fernziele und Münzziele sind höher, zum Beispiel Eismeer 1.500 m und Atlantis 2.000 m und 250 Münzen.
+  - Diamant-, Truhen-, Rettungs- und Leuchtperlen-Ziele sind passend zur neuen Seltenheit etwas kleiner.
+- **Gesamter Inhalt:** etwa 66.000 Münzen und 980 Diamanten, vorher etwa 30.000 und 490. Bei ungefähr 30 Minuten am Tag reicht das für mehrere Wochen.
+- Bestehende Spielstände bleiben erhalten. Bereits Gekauftes bleibt gekauft.
+
+---
+
+## V4.1 – 15.11.2026
+
+- Test-Knöpfe „+1000 Testmünzen“ und „+100 Testdiamanten“ entfernt.
+- Knopf „Spielstand löschen“ entfernt. Das Spiel kann nicht mehr versehentlich von vorne begonnen werden.
+- Spielstand, Bestenliste und Geisterboote bleiben beim Update erhalten.
+
+---
+
 ## V4 – 12.11.2026
 
 ### Deine Wünsche
@@ -117,6 +151,7 @@ Kinder-Handyspiel (FSK 6) mit Three.js, als HTML-Datei, später als PWA.
 ---
 
 ## Geplant für V5
+- Steuerknüppel ein Stück größer (Wunsch nach dem Handy-Test)
 - Spezialausrüstung: Greifarm, Sonar-Ping, Schutzblase, Blasen-Kanone
 - Sichtbare Boot-Stufen nach vielen Upgrades
 - Begleiter (Fisch, Delfin, Mini-Oktopus, Seepferdchen)

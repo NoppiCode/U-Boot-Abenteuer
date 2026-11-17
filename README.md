@@ -1,4 +1,4 @@
-# U-Boot Abenteuer – PWA (Version V4)
+# U-Boot Abenteuer – PWA (Version V4.2)
 
 ## Inhalt dieses Ordners
 | Datei | Wofür |
@@ -22,7 +22,7 @@
 
 ## Ein Update hochladen
 - Die geänderte `index.html` (und ggf. andere Dateien) wieder per **Upload files** hochladen.
-- In `sw.js` die Zeile `const CACHE = 'uboot-v4';` hochzählen (z. B. `uboot-v5`), damit die Handys die neue Version laden.
+- In `sw.js` die Zeile `const CACHE = 'uboot-v4-2';` hochzählen (z. B. `uboot-v4-3`), damit die Handys die neue Version laden.
 - Danach die App einmal schließen und neu öffnen.
 
 Der Spielstand bleibt beim Update erhalten.
